@@ -20,7 +20,7 @@ module Fastlane
     class AnalyzeCommitsAction < Action
       def self.get_last_tag(params)
         # Try to find the tag
-        command = "git describe --tags --match=#{params[:match]}"
+        command = "git describe --tags --abbrev=0 --match=#{params[:match]}"
         Actions.sh(command, log: params[:debug])
       rescue
         UI.message("Tag was not found for match pattern - #{params[:match]}")
